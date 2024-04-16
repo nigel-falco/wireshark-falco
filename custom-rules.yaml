@@ -1,0 +1,14 @@
+customRules:
+  custom-rules.yaml: |-
+    # Disabling noisy Falco rules
+    - rule: Drop and execute new binary in container
+      enabled: false
+
+    - rule: Change thread namespace
+      enabled: false
+
+    - rule: BPF Program Not Profiled
+      enabled: false
+
+    - rule: Set Setuid or Setgid bit
+      enabled: false
