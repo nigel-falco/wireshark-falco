@@ -15,3 +15,6 @@ customRules:
 
     - rule: Write below root
       enabled: false
+
+    - rule: Unexpected UDP Traffic
+      enabled: false
