@@ -12,3 +12,6 @@ customRules:
 
     - rule: Set Setuid or Setgid bit
       enabled: false
+
+    - rule: Write below root
+      enabled: false
