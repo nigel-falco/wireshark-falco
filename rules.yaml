@@ -1,11 +1,12 @@
-- action: Terminate Pod
-  actionner: kubernetes:terminate
+#- action: Terminate Pod
+#  actionner: kubernetes:terminate
 
 - action: Run a Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
+      mkdir helloworld
       tshark -i cni0 -a duration:10 -w falco-talon-wireshark.pcap
 
 - action: Labelize Pod as Suspicious
@@ -20,9 +21,9 @@
       - Detect crypto miners using the Stratum protocol
   actions:
     - action: Run a Wireshark capture
-    - action: Terminate Pod
-      parameters:
-        grace_period_seconds: 8
+#    - action: Terminate Pod
+#      parameters:
+#        grace_period_seconds: 8
 
 - rule: Terminal shell in container 
   match:
