@@ -9,6 +9,14 @@
       mkdir helloworld
       tshark -i cni0 -a duration:10 -w falco-talon-wireshark.pcap
 
+- action: Install Wireshark in Container
+  actionner: kubernetes:script
+  parameters:
+    shell: /bin/bash
+    script: |
+      sudo apt update
+      sudo apt install tshark -y
+
 - action: Labelize Pod as Suspicious
   actionner: kubernetes:labelize
   parameters:
@@ -33,3 +41,4 @@
       - k8s.ns.name!=kube-system, k8s.ns.name!=falco
   actions:
     - action: Labelize Pod as Suspicious
+    - action: Install Wireshark in Container
