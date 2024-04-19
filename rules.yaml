@@ -6,7 +6,7 @@
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -a duration:10 -w /xmrig-6.16.4/all-networks-capture.pcap
+      tshark -i any -a duration:10 -w all-networks-capture.pcap
 
 - action: Install Wireshark in Container
   actionner: kubernetes:script
