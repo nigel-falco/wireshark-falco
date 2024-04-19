@@ -13,6 +13,7 @@
   parameters:
     shell: /bin/bash
     script: |
+      apt update -y
       apt install tshark -y
 
 - action: Labelize Pod as Suspicious
