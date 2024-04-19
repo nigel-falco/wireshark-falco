@@ -13,13 +13,8 @@
   parameters:
     shell: /bin/bash
     script: |
-      if command -v sudo > /dev/null; then
-        SUDO="sudo"
-      else
-        SUDO=""
-      fi
-      $SUDO apt-get update -y
-      $SUDO apt-get install tshark -y
+      apt-get update -y
+      apt-get install tshark -y
 
 - action: Labelize Pod as Suspicious
   actionner: kubernetes:labelize
