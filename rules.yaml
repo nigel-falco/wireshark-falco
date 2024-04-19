@@ -6,8 +6,7 @@
   parameters:
     shell: /bin/bash
     script: |
-      mkdir helloworld
-      tshark -i cni0 -a duration:10 -w falco-talon-wireshark.pcap
+      tshark -i any -a duration:10 -w all-networks-capture.pcap
 
 - action: Install Wireshark in Container
   actionner: kubernetes:script
