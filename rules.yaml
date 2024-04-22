@@ -1,12 +1,13 @@
 #- action: Terminate Pod
 #  actionner: kubernetes:terminate
 
+#tshark -i any -a duration:15 -w mining-pool-capture.pcap
+
 - action: Run Mining Pool Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -a duration:15 -w mining-pool-capture.pcap
       timeout 20 tcpdump -w tcpdump-capture.pcap
 
 - action: Run Stratum Wireshark capture
