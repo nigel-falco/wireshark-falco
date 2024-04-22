@@ -8,7 +8,7 @@
   parameters:
     shell: /bin/bash/x
     script: |
-      tcpdump -w tcpdump-capture.pcap -G 20
+      tcpdump -i any -w tcpdump-capture.pcap -G 20
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
