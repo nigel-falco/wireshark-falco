@@ -19,5 +19,6 @@ customRules:
     - rule: Unexpected UDP Traffic
       enabled: false
 
+    # Enabling mining rule for Capture #1 (Lab 3)
     - rule: Detect outbound connections to common miner pool ports
       enabled: true
