@@ -1,12 +1,19 @@
 #- action: Terminate Pod
 #  actionner: kubernetes:terminate
 
-- action: Run a Wireshark capture
+- action: Run Mining Pool Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -a duration:15 -w all-networks-capture.pcap
+      tshark -i any -a duration:15 -w mining-pool-capture.pcap
+
+- action: Run Stratum Wireshark capture
+  actionner: kubernetes:script
+  parameters:
+    shell: /bin/bash
+    script: |
+      tshark -i any -a duration:15 -w stratum-protocol-capture.pcap
 
 - action: Install Wireshark in Container
   actionner: kubernetes:script
@@ -26,7 +33,17 @@
     rules:
       - Detect outbound connections to common miner pool ports
   actions:
-    - action: Run a Wireshark capture
+    - action: Run Mining Pool Wireshark capture
+#    - action: Terminate Pod
+#      parameters:
+#        grace_period_seconds: 8
+
+- rule: Detect crypto miners using the Stratum protocol
+  match:
+    rules:
+      - Detect crypto miners using the Stratum protocol
+  actions:
+    - action: Run Stratum Wireshark capture
 #    - action: Terminate Pod
 #      parameters:
 #        grace_period_seconds: 8
