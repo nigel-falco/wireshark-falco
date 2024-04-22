@@ -13,7 +13,6 @@
   parameters:
     shell: /bin/bash
     script: |
-      apt update -y
       apt install tshark -y
 
 - action: Labelize Pod as Suspicious
@@ -22,10 +21,10 @@
     labels:
       suspicious: true
 
-- rule: Detect crypto miners using the Stratum protocol
+- rule: Detect outbound connections to common miner pool ports
   match:
     rules:
-      - Detect crypto miners using the Stratum protocol
+      - Detect outbound connections to common miner pool ports
   actions:
     - action: Run a Wireshark capture
 #    - action: Terminate Pod
