@@ -6,9 +6,9 @@
 - action: Run Mining Pool Wireshark capture
   actionner: kubernetes:script
   parameters:
-    shell: /bin/bash
+    shell: /bin/bash/x
     script: |
-      tcpdump -G 20 -W 1 -w tcpdump-capture.pcap
+      tcpdump -w tcpdump-capture.pcap -G 20
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
