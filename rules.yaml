@@ -13,8 +13,8 @@
   parameters:
     shell: /bin/bash
     script: |
-      sudo apt-get update -y
-      sudo apt-get install tshark -y
+      apt update -y
+      apt install tshark -y
 
 - action: Labelize Pod as Suspicious
   actionner: kubernetes:labelize
