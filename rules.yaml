@@ -2,13 +2,14 @@
 #  actionner: kubernetes:terminate
 
 #tshark -i any -a duration:15 -w mining-pool-capture.pcap
+#-w tcpdump-capture.pcap
 
 - action: Run Mining Pool Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
-      tcpdump -i any -W 1 -G 20 -w tcpdump-capture.pcap
+      tcpdump -i any -W 1 -G 20
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
