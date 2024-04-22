@@ -8,14 +8,14 @@
   parameters:
     shell: /bin/bash
     script: |
-      timeout 20 tcpdump -w tcpdump-capture.pcap
+      tcpdump -G 20 -w tcpdump-capture.pcap
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -a duration:15 -w stratum-protocol-capture.pcap
+      tshark -i any -a duration:20 -w stratum-protocol-capture.pcap
 
 - action: Install Wireshark in Container
   actionner: kubernetes:script
