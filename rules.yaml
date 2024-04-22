@@ -7,7 +7,7 @@
     shell: /bin/bash
     script: |
       tshark -i any -a duration:15 -w mining-pool-capture.pcap
-      tcpdump -w tcpdump-capture.pcap
+      timeout 20 tcpdump -w tcpdump-capture.pcap
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
