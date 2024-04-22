@@ -10,12 +10,12 @@
     script: |
       tcpdump -G 20 -W 1 -w tcpdump-capture.pcap
 
-- action: Run Stratum Wireshark capture
-  actionner: kubernetes:script
-  parameters:
-    shell: /bin/bash
-    script: |
-      tshark -i any -a duration:20 -w stratum-protocol-capture.pcap
+#- action: Run Stratum Wireshark capture
+#  actionner: kubernetes:script
+#  parameters:
+#    shell: /bin/bash
+#    script: |
+#      tshark -i any -a duration:20 -w stratum-protocol-capture.pcap
 
 - action: Install Wireshark in Container
   actionner: kubernetes:script
@@ -58,4 +58,4 @@
       - k8s.ns.name!=kube-system, k8s.ns.name!=falco
   actions:
     - action: Labelize Pod as Suspicious
-    - action: Install Wireshark in Container
+#    - action: Install Wireshark in Container
