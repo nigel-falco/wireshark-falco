@@ -9,6 +9,7 @@
     shell: /bin/bash
     script: |
       tcpdump -i eth0 -W 1 -G 30 -w tcpdump-capture.pcap
+    # tshark -i any -a duration:20 -w stratum-protocol-capture.pcap
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
@@ -16,6 +17,7 @@
     shell: /bin/bash
     script: |
       tshark -i any -a duration:20 -w stratum-protocol-capture.pcap
+    # tcpdump -i eth0 -W 1 -G 30 -w tcpdump-capture2.pcap      
 
 #- action: Install Wireshark in Container
 #  actionner: kubernetes:script
