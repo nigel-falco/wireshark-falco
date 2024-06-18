@@ -22,6 +22,7 @@
     shell: /bin/bash
     script: |
       tshark -i any -a duration:20 -w stratum-protocol-capture-$(date +"%Y%m%d%H%M%S").pcap
+#      mv /stratum-protocol-capture-*.pcap /root
 
 - action: Label Pod as Suspicious
   actionner: kubernetes:label
