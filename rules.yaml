@@ -23,11 +23,11 @@
     script: |
       tshark -i any -a duration:20 -w stratum-protocol-capture-$(date +"%Y%m%d%H%M%S").pcap
 
-#- action: Labelize Pod as Suspicious
-#  actionner: kubernetes:labelize
-#  parameters:
-#    labels:
-#      suspicious: true
+- action: Label Pod as Suspicious
+  actionner: kubernetes:label
+  parameters:
+    labels:
+      suspicious: "true"
 
 - rule: Detect outbound connections to common miner pool ports
   match:
@@ -56,5 +56,5 @@
     output_fields:
       - k8s.ns.name!=kube-system, k8s.ns.name!=falco
   actions:
-#    - action: Labelize Pod as Suspicious
+    - action: Label Pod as Suspicious
     - action: Run Mining Pool Wireshark capture
