@@ -14,14 +14,14 @@
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -c 20 -w mining-pool-capture.pcap
+      tshark -i any -c 20 -w mining-pool-capture-$(date +"%Y%m%d%H%M%S").pcap
 
 - action: Run Stratum Wireshark capture
   actionner: kubernetes:script
   parameters:
     shell: /bin/bash
     script: |
-      tshark -i any -a duration:20 -w stratum-protocol-capture.pcap    
+      tshark -i any -a duration:20 -w stratum-protocol-capture-$(date +"%Y%m%d%H%M%S").pcap
 
 #- action: Labelize Pod as Suspicious
 #  actionner: kubernetes:labelize
