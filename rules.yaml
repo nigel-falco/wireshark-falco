@@ -58,4 +58,19 @@
       - k8s.ns.name!=kube-system, k8s.ns.name!=falco
   actions:
     - action: Label Pod as Suspicious
-    - action: Run Mining Pool Wireshark capture
+#    - action: Run Mining Pool Wireshark capture
+
+- rule: Find AWS Credentials
+  match:
+    rules:
+      - Find AWS Credentials
+  actions:
+    - action: Find AWS Credentials
+      actionner: kubernetes:tcpdump
+      parameters:
+        duration: 1024
+        snaplen: 2048
+      output:
+        target: local:file
+        parameters:
+          destination: /tmp/
